@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đào Nhật Cường | Technical Artist & Unreal Engine Developer</title>
+  <meta name="description" content="Portfolio of Dao Nhat Cuong - Technical Artist & Game Developer specializing in Unreal Engine 5, C++, Blueprint, Shaders, Niagara VFX, PCG, and real-time optimization.">
+  <meta name="keywords" content="Dao Nhat Cuong, Technical Artist, Unreal Engine 5, Game Developer, Sparx Virtuos, Shaders, Niagara VFX, PCG, C++, Blueprint, Portfolio">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dao Nhat Cuong | Technical Artist & UE5 Developer">
+  <meta property="og:description" content="Explore end-to-end 3D game development, dynamic weather shaders, pipeline automation, and procedural generation.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts: Space Grotesk, JetBrains Mono, Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Three.js for Interactive 3D Background & Shader Lab -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Interactive Niagara Canvas Background -->
+  <canvas id="niagara-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Cyber Grid Overlay -->
+  <div class="cyber-grid" aria-hidden="true"></div>
+  <div class="vignette-overlay" aria-hidden="true"></div>
+
+  <!-- Audio feedback status indicator / Custom notification toast -->
+  <div id="toast" class="toast" role="alert" aria-live="polite">
+    <span class="toast-icon">⚡</span>
+    <span class="toast-message" id="toast-text">Thông báo</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" id="brand-link">
+        <div class="brand-avatar-box" title="Đào Nhật Cường">
+          <img src="assets/images/avatar.jpg" alt="Đào Nhật Cường" class="brand-avatar-img">
+          <span class="avatar-status-dot" title="Available for Work"></span>
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">DAO NHAT CUONG</span>
+          <span class="brand-role">UE5 TECH ARTIST</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-links" id="nav-menu">
+        <a href="#about" class="nav-link" data-nav="about">
+          <span class="nav-num">01.</span>
+          <span data-i18n="nav_about">Giới Thiệu</span>
+        </a>
+        <a href="#projects" class="nav-link" data-nav="projects">
+          <span class="nav-num">02.</span>
+          <span data-i18n="nav_projects">Dự Án</span>
+        </a>
+        <a href="#shader-lab" class="nav-link" data-nav="shader-lab">
+          <span class="nav-num">03.</span>
+          <span data-i18n="nav_lab">Shader Lab (MPC)</span>
+        </a>
+        <a href="#skills" class="nav-link" data-nav="skills">
+          <span class="nav-num">04.</span>
+          <span data-i18n="nav_skills">Kỹ Năng</span>
+        </a>
+        <a href="#experience" class="nav-link" data-nav="experience">
+          <span class="nav-num">05.</span>
+          <span data-i18n="nav_experience">Kinh Nghiệm</span>
+        </a>
+        <a href="#contact" class="nav-link" data-nav="contact">
+          <span class="nav-num">06.</span>
+          <span data-i18n="nav_contact">Liên Hệ</span>
+        </a>
+      </nav>
+
+      <!-- System Controls: Sound, Language, Status -->
+      <div class="nav-actions">
+        <!-- SFX Toggle -->
+        <button id="sfx-toggle" class="control-btn" title="Toggle SFX Audio" aria-label="Toggle Sound Effects">
+          <i data-lucide="volume-2" id="sfx-icon"></i>
+          <span class="control-label">SFX</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <button id="lang-toggle" class="control-btn lang-btn" title="Switch Language" aria-label="Switch Language">
+          <span class="lang-code active" id="lang-vi">VI</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-code" id="lang-en">EN</span>
+        </button>
+
+        <!-- Engine Status Badge -->
+        <div class="engine-badge" title="Unreal Engine 5.4 Ready">
+          <span class="status-pulse"></span>
+          <span class="status-text">UE5 • READY</span>
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="hero-container">
+        <!-- Left HUD Profile Meta -->
+        <div class="hero-content">
+          <div class="hud-tagline">
+            <span class="tag-line-accent"></span>
+            <span class="tag-text" data-i18n="hero_tagline">HỆ THỐNG UNREAL ENGINE 5 & PIPELINE TECH ART</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="hero-greeting" data-i18n="hero_greeting">Xin chào, tôi là</span>
+            <span class="hero-name glitch-text" data-text="ĐÀO NHẬT CƯỜNG">ĐÀO NHẬT CƯỜNG</span>
+            <span class="hero-subtitle">
+              <span class="typed-text" id="typed-text"></span>
+              <span class="cursor-blink">_</span>
+            </span>
+          </h1>
+
+          <p class="hero-desc" data-i18n="hero_desc">
+            Kỹ sư phần mềm định hướng <strong>Technical Artist / Game Developer</strong>. Chuyên sâu về quy trình phát triển game 3D từ A-Z trên <strong>Unreal Engine 5</strong>: lập trình hệ thống chiến thuật Blueprint/C++, tối ưu hóa tài nguyên (Lumen, Nanite), kiến trúc Shader động, Niagara VFX và Procedural Content Generation (PCG).
+          </p>
+
+          <!-- Engine Telemetry Bar -->
+          <div class="engine-telemetry">
+            <div class="telemetry-item">
+              <span class="telemetry-dot cyan"></span>
+              <span class="telemetry-label">LUMEN:</span>
+              <span class="telemetry-value">GI / REFLECTIONS</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="telemetry-dot violet"></span>
+              <span class="telemetry-label">NANITE:</span>
+              <span class="telemetry-value">VIRTUALIZED GEOM</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="telemetry-dot green"></span>
+              <span class="telemetry-label">NIAGARA:</span>
+              <span class="telemetry-value">GPU PARTICLES</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="telemetry-dot amber"></span>
+              <span class="telemetry-label">PCG:</span>
+              <span class="telemetry-value">PROCEDURAL GRAPH</span>
+            </div>
+          </div>
+
+          <!-- Hero Action CTAs -->
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary" id="btn-explore-projects">
+              <i data-lucide="gamepad-2"></i>
+              <span data-i18n="btn_explore">Khám Phá Dự Án</span>
+            </a>
+            <a href="#shader-lab" class="btn btn-secondary" id="btn-open-lab">
+              <i data-lucide="sliders"></i>
+              <span data-i18n="btn_shader_lab">Mô Phỏng Shader Lab</span>
+            </a>
+            <a href="#contact" class="btn btn-outline" id="btn-contact-hero">
+              <i data-lucide="mail"></i>
+              <span data-i18n="btn_contact">Liên Hệ Trực Tiếp</span>
+            </a>
+          </div>
+
+          <!-- Quick Stat Counters -->
+          <div class="hero-stats">
+            <div class="stat-card">
+              <div class="stat-num">Sparx*</div>
+              <div class="stat-label" data-i18n="stat_sparx">Virtuos Studio Intern</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">3.07/4.0</div>
+              <div class="stat-label" data-i18n="stat_gpa">HUTECH Software Eng.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">100%</div>
+              <div class="stat-label" data-i18n="stat_opt">Zero Recompile Shaders</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">B1</div>
+              <div class="stat-label" data-i18n="stat_eng">Vstep English Cert</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Interactive Hologram Card -->
+        <div class="hero-visual">
+          <div class="holo-card-wrapper" id="hero-card">
+            <div class="holo-card">
+              <div class="holo-frame-header">
+                <span class="holo-id">ID: TA-TEST // UE5_LUMEN</span>
+                <span class="holo-coords">10.7769° N, 106.7009° E (HCMC)</span>
+              </div>
+              <div class="holo-image-container">
+                <img src="assets/images/hero-tech-art.jpg" alt="Unreal Engine 5 Tech Art City" class="holo-img" loading="eager">
+                <div class="holo-scanline"></div>
+                <div class="holo-glow-nodes">
+                  <div class="glow-node node-1" title="Lumen Dynamic GI"><span>LUMEN</span></div>
+                  <div class="glow-node node-2" title="Nanite Cluster View"><span>NANITE</span></div>
+                  <div class="glow-node node-3" title="Niagara Particle VFX"><span>NIAGARA</span></div>
+                </div>
+              </div>
+              <div class="holo-footer">
+                <div class="holo-status">
+                  <span class="status-live"></span>
+                  <span data-i18n="holo_engine_status">PIPELINE AUTOMATION • LIVE VIEWPORT</span>
+                </div>
+                <div class="holo-badge">C++ / CDO REFLECTION</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-down-indicator">
+        <a href="#about" aria-label="Cuộn xuống">
+          <span data-i18n="scroll_down">CUỘN XUỐNG KHÁM PHÁ</span>
+          <i data-lucide="chevron-down" class="bounce-anim"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <span class="badge-num">01</span>
+            <span class="badge-title" data-i18n="section_about_badge">PROFILE & TẦM NHÌN</span>
+          </div>
+          <h2 class="section-title" data-i18n="section_about_title">Cầu Nối Giữa Nghệ Thuật & Kỹ Thuật</h2>
+          <p class="section-subtitle" data-i18n="section_about_subtitle">
+            Tối ưu hóa hiệu năng đỉnh cao không đánh đổi chất lượng đồ họa thế hệ mới
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left About Bio -->
+          <div class="about-bio-card glass-panel reveal-left">
+            <div class="card-glow"></div>
+            <div class="terminal-bar">
+              <div class="term-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="term-title">cuong_profile.sys</span>
+            </div>
+            <div class="about-bio-content">
+              <!-- Hologram Avatar Profile Header -->
+              <div class="bio-profile-header">
+                <div class="bio-avatar-wrapper" data-tilt>
+                  <div class="avatar-holo-frame">
+                    <img src="assets/images/avatar.jpg" alt="Đào Nhật Cường" class="bio-avatar-img">
+                    <div class="avatar-scanline"></div>
+                    <div class="avatar-corners">
+                      <span class="c-corner tl"></span>
+                      <span class="c-corner tr"></span>
+                      <span class="c-corner bl"></span>
+                      <span class="c-corner br"></span>
+                    </div>
+                  </div>
+                  <div class="avatar-status-badge">
+                    <span class="pulse-dot"></span>
+                    <span data-i18n="avatar_status">OPEN FOR WORK // 2026</span>
+                  </div>
+                </div>
+
+                <div class="bio-intro-text">
+                  <div class="bio-tagline-chip">
+                    <span class="chip-accent"></span>
+                    <span class="chip-title" data-i18n="about_tag_chip">TECHNICAL ARTIST & UE5 DEVELOPER</span>
+                  </div>
+                  <h3 class="bio-heading" data-i18n="about_heading">Chào bạn, tôi là Đào Nhật Cường</h3>
+                  <div class="bio-quick-meta">
+                    <span class="meta-pill"><i data-lucide="map-pin"></i> Ho Chi Minh City, VN</span>
+                    <span class="meta-pill cyan"><i data-lucide="sparkles"></i> Unreal Engine 5</span>
+                    <span class="meta-pill amber"><i data-lucide="award"></i> Sparx* Intern</span>
+                  </div>
+                </div>
+              </div>
+              <p class="bio-text" data-i18n="about_p1">
+                Là sinh viên năm cuối chuyên ngành Kỹ thuật Phần mềm tại <strong>Đại học HUTECH</strong> với mục tiêu trở thành một <strong>Technical Artist / Game Developer</strong> chuyên nghiệp. Tôi đam mê kết hợp tư duy logic lập trình chặt chẽ với cảm quan mỹ thuật thị giác 3D.
+              </p>
+              <p class="bio-text" data-i18n="about_p2">
+                Với kinh nghiệm thực chiến từ khóa thực tập chuyên sâu tại <strong>Sparx* - a Virtuos Studio</strong> và các dự án cá nhân kỹ thuật cao, tôi đã làm chủ các công nghệ mới nhất của <strong>Unreal Engine 5</strong> (Lumen, Nanite, PCG, Control Rig, Shaders, Niagara VFX). Tôi tin rằng một Technical Artist giỏi chính là chìa khóa giúp studio hiện thực hóa những thế giới game kỳ vĩ với tốc độ khung hình 60+ FPS mượt mà.
+              </p>
+
+              <div class="about-highlights">
+                <div class="highlight-item">
+                  <i data-lucide="cpu" class="highlight-icon"></i>
+                  <div>
+                    <strong data-i18n="hl1_title">Tối Ưu Hóa & Profiling</strong>
+                    <span data-i18n="hl1_desc">Thành thạo công cụ profiling UE5, hạn chế draw calls, tối ưu Nanite & memory budget.</span>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="git-branch" class="highlight-icon"></i>
+                  <div>
+                    <strong data-i18n="hl2_title">Quy Trình Chuẩn Studio AAA</strong>
+                    <span data-i18n="hl2_desc">Kinh nghiệm làm việc với Perforce (P4V), Git, CI/CD pipeline và Editor Utility Wizard.</span>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="sparkles" class="highlight-icon"></i>
+                  <div>
+                    <strong data-i18n="hl3_title">Shader Động & VFX Thông Minh</strong>
+                    <span data-i18n="hl3_desc">Tận dụng Material Parameter Collections (MPC) để thay đổi thời tiết không cần biên dịch lại shader.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="about-cta-row">
+                <a href="#contact" class="btn btn-primary">
+                  <i data-lucide="send"></i>
+                  <span data-i18n="btn_hire_me">Hợp Tác Tuyển Dụng</span>
+                </a>
+                <a href="https://github.com/Dex-NCuong" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                  <i data-lucide="github"></i>
+                  <span>GitHub: Dex-NCuong</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Pillars Grid -->
+          <div class="about-pillars reveal-right">
+            <div class="pillar-card glass-panel" data-tilt>
+              <div class="pillar-icon-box cyan-glow">
+                <i data-lucide="code-2"></i>
+              </div>
+              <h4 class="pillar-title" data-i18n="pillar1_title">Pipeline Tool & C++</h4>
+              <p class="pillar-desc" data-i18n="pillar1_desc">
+                Xây dựng C++ Plugin tích hợp Editor Utility Wizard 5 bước, tự động hóa quy trình khởi tạo Enemy Blueprint thông qua CDO reflection, giúp Game Designer tiết kiệm 70% thời gian thiết lập.
+              </p>
+              <div class="pillar-tags">
+                <span>C++</span>
+                <span>EUW</span>
+                <span>CDO Reflection</span>
+              </div>
+            </div>
+
+            <div class="pillar-card glass-panel" data-tilt>
+              <div class="pillar-icon-box violet-glow">
+                <i data-lucide="palette"></i>
+              </div>
+              <h4 class="pillar-title" data-i18n="pillar2_title">Dynamic Shaders & Tech Art</h4>
+              <p class="pillar-desc" data-i18n="pillar2_desc">
+                Phát triển hệ thống vật liệu thời tiết thời gian thực (độ ẩm ướt, tích tụ tuyết, đóng băng) điều khiển hoàn toàn bằng Material Parameter Collections (MPC) với 0% shader recompilation.
+              </p>
+              <div class="pillar-tags">
+                <span>Material Editor</span>
+                <span>MPC</span>
+                <span>Weather Shaders</span>
+              </div>
+            </div>
+
+            <div class="pillar-card glass-panel" data-tilt>
+              <div class="pillar-icon-box green-glow">
+                <i data-lucide="activity"></i>
+              </div>
+              <h4 class="pillar-title" data-i18n="pillar3_title">Zero-Tick Gameplay Logic</h4>
+              <p class="pillar-desc" data-i18n="pillar3_desc">
+                Kiến trúc Ability System hướng sự kiện bằng ActorComponents độc lập. Quản lý toàn bộ thông qua Data Assets & Gameplay Tags, tích hợp mượt mà với Niagara VFX không tiêu tốn chu kỳ Tick.
+              </p>
+              <div class="pillar-tags">
+                <span>Event-Driven</span>
+                <span>Gameplay Tags</span>
+                <span>Data Assets</span>
+              </div>
+            </div>
+
+            <div class="pillar-card glass-panel" data-tilt>
+              <div class="pillar-icon-box amber-glow">
+                <i data-lucide="layers"></i>
+              </div>
+              <h4 class="pillar-title" data-i18n="pillar4_title">Procedural & Animation</h4>
+              <p class="pillar-desc" data-i18n="pillar4_desc">
+                Áp dụng Procedural Content Generation (PCG) để tạo sinh và phân bố môi trường tự nhiên, kết hợp Anim BP, Blend Spaces, MetaHuman, Control Rig và Mutable.
+              </p>
+              <div class="pillar-tags">
+                <span>PCG</span>
+                <span>MetaHuman</span>
+                <span>Control Rig</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <span class="badge-num">02</span>
+            <span class="badge-title" data-i18n="section_proj_badge">CÁC DỰ ÁN TIÊU BIỂU</span>
+          </div>
+          <h2 class="section-title" data-i18n="section_proj_title">Công Nghệ & Kỹ Thuật Đã Triển Khai</h2>
+          <p class="section-subtitle" data-i18n="section_proj_subtitle">
+            Khám phá các giải pháp kỹ thuật, hệ thống shader và quy trình tự động hóa thực chiến
+          </p>
+        </div>
+
+        <div class="projects-container">
+          <!-- Project 1: TA_Test -->
+          <article class="project-card glass-panel reveal-up" id="project-ta-test" data-tilt>
+            <div class="card-border-glow"></div>
+            <div class="project-grid">
+              <div class="project-media">
+                <div class="media-wrapper">
+                  <img src="assets/images/weather-shader.jpg" alt="Dynamic Weather Material Demo" class="project-img">
+                  <div class="media-overlay">
+                    <button class="preview-btn" onclick="openShaderLabDemo()" aria-label="Mở demo shader tương tác">
+                      <i data-lucide="play-circle"></i>
+                      <span data-i18n="btn_try_live">Thử Nghiệm Tương Tác Ngay</span>
+                    </button>
+                  </div>
+                  <div class="project-status-tag">
+                    <span class="tag-dot"></span>
+                    <span>JUL 2026 // OPEN SOURCE</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-details">
+                <div class="project-header-row">
+                  <div>
+                    <span class="proj-category">UNREAL ENGINE 5 • C++ • TECH ART</span>
+                    <h3 class="project-name">Technical Artist Combo (TA_Test)</h3>
+                  </div>
+                  <a href="https://github.com/Dex-NCuong/TA_Test" target="_blank" rel="noopener noreferrer" class="proj-link-btn" title="View GitHub Repository" aria-label="Xem mã nguồn trên GitHub">
+                    <i data-lucide="github"></i>
+                  </a>
+                </div>
+
+                <p class="project-summary" data-i18n="p1_summary">
+                  Bộ công cụ và framework kỹ thuật toàn diện giải quyết 3 bài toán lớn trong game pipeline: tự động hóa công cụ thiết kế qua C++ plugin, hệ thống vật liệu thời tiết chuyển đổi động tức thời, và hệ thống kỹ năng gameplay hướng sự kiện tối ưu hiệu năng không sử dụng Tick.
+                </p>
+
+                <!-- 3 Pillars Breakdown Accordion/Grid -->
+                <div class="tech-breakdown-list">
+                  <div class="tech-feature-card">
+                    <div class="feature-icon cyan"><i data-lucide="wrench"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p1_feat1_title">Pipeline Tool Development (C++ & EUW)</strong>
+                      <p data-i18n="p1_feat1_desc">Phát triển C++ plugin tích hợp Editor Utility Wizard 5 bước. Tự động hóa toàn bộ quy trình tạo Enemy Blueprint thông qua CDO reflection, rút ngắn thời gian làm việc của team Designer.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon violet"><i data-lucide="cloud-rain"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p1_feat2_title">Dynamic Weather & Shader Tech</strong>
+                      <p data-i18n="p1_feat2_desc">Thiết kế hệ thống master material thời tiết thời gian thực (độ ướt mặt nước, tuyết tích tụ theo độ dốc, đóng băng bề mặt) điều khiển thông qua Material Parameter Collections (MPC) với 0 shader recompilation.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon green"><i data-lucide="zap"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p1_feat3_title">Modular Gameplay Programming (Zero-Tick)</strong>
+                      <p data-i18n="p1_feat3_desc">Xây dựng Ability System hướng sự kiện sử dụng ActorComponents độc lập. Quản lý toàn bộ logic bằng Data Assets và Gameplay Tags, đồng bộ hoàn hảo với Niagara VFX.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-tags">
+                  <span class="tag">C++ 20</span>
+                  <span class="tag">Editor Utility Widget</span>
+                  <span class="tag">CDO Reflection</span>
+                  <span class="tag">MPC Shaders</span>
+                  <span class="tag">Gameplay Tags</span>
+                  <span class="tag">Niagara VFX</span>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://github.com/Dex-NCuong/TA_Test" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <i data-lucide="external-link"></i>
+                    <span data-i18n="btn_github_repo">Xem GitHub TA_Test</span>
+                  </a>
+                  <button class="btn btn-secondary" onclick="openShaderLabDemo()">
+                    <i data-lucide="sparkles"></i>
+                    <span data-i18n="btn_inspect_shaders">Mở Shader Sandbox</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Sparx* - a Virtuos Studio Internship & Game Jam -->
+          <article class="project-card glass-panel reveal-up" id="project-sparx" data-tilt>
+            <div class="card-border-glow"></div>
+            <div class="project-grid">
+              <div class="project-media">
+                <div class="media-wrapper video-media">
+                  <div class="video-thumbnail-container" onclick="openVideoModal('7S_7sxQaQYA')" role="button" tabindex="0" aria-label="Xem video đào tạo Sparx*">
+                    <img src="assets/images/hero-tech-art.jpg" alt="Sparx* Virtuos Workshop Video" class="project-img">
+                    <div class="video-play-badge">
+                      <div class="pulse-ring"></div>
+                      <i data-lucide="play" class="play-icon"></i>
+                    </div>
+                    <div class="video-time-chip">
+                      <i data-lucide="youtube"></i>
+                      <span>Training Workshop Video</span>
+                    </div>
+                  </div>
+                  <div class="project-status-tag">
+                    <span class="tag-dot amber"></span>
+                    <span>MAY 2026 - JUL 2026 // SPARX* VIRTUOS</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-details">
+                <div class="project-header-row">
+                  <div>
+                    <span class="proj-category">STUDIO INTERNSHIP • GAME JAM • TRIPLE-A PIPELINE</span>
+                    <h3 class="project-name">Sparx* - a Virtuos Studio // Tech Artist Intern & Game Jam</h3>
+                  </div>
+                  <button class="proj-link-btn" onclick="openVideoModal('7S_7sxQaQYA')" title="Xem Video Workshop" aria-label="Xem Video Workshop">
+                    <i data-lucide="youtube"></i>
+                  </button>
+                </div>
+
+                <p class="project-summary" data-i18n="p2_summary">
+                  Khóa đào tạo chuyên sâu và thực chiến quy trình phát triển game AAA trên Unreal Engine 5 tại <strong>Sparx* - a Virtuos Studio</strong>, kết thúc bằng dự án Game Jam 1 tuần với chủ đề <em>"In Turn"</em> & <em>"Underdog"</em>.
+                </p>
+
+                <!-- Responsibilities breakdown -->
+                <div class="tech-breakdown-list">
+                  <div class="tech-feature-card">
+                    <div class="feature-icon amber"><i data-lucide="film"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p2_feat1_title">Level Design, Lighting & Sequencer</strong>
+                      <p data-i18n="p2_feat1_desc">Thực hành chiếu sáng động với Lumen, tạo vật liệu phức hợp, dựng cinematic cutscenes với Sequencer và quản lý asset chuẩn studio qua Perforce (P4V).</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon cyan"><i data-lucide="user-check"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p2_feat2_title">Character Tech, MetaHuman & Mutable</strong>
+                      <p data-i18n="p2_feat2_desc">Làm việc chuyên sâu với Mixamo, MetaHuman, Control Rig tùy biến khung xương chuyển động và plugin Mutable cho hệ thống nhân vật linh hoạt.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon green"><i data-lucide="tree-pine"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p2_feat3_title">Game Jam Champion: Gameplay Logic, PCG & Sequencer</strong>
+                      <p data-i18n="p2_feat3_desc">Đảm nhiệm toàn bộ Blueprint Gameplay Logic, Animation Blend Spaces, kiến trúc môi trường Procedural Content Generation (PCG) và dựng Sequencer hoàn chỉnh trong 7 ngày.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-tags">
+                  <span class="tag">Sparx* Virtuos</span>
+                  <span class="tag">Unreal Engine 5</span>
+                  <span class="tag">Perforce (P4V)</span>
+                  <span class="tag">MetaHuman</span>
+                  <span class="tag">Control Rig</span>
+                  <span class="tag">PCG</span>
+                  <span class="tag">Game Jam</span>
+                </div>
+
+                <div class="project-actions">
+                  <button class="btn btn-primary" onclick="openVideoModal('7S_7sxQaQYA')">
+                    <i data-lucide="play-circle"></i>
+                    <span data-i18n="btn_watch_video">Xem Video Workshop Trên YouTube</span>
+                  </button>
+                  <a href="https://www.youtube.com/watch?v=7S_7sxQaQYA" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i data-lucide="external-link"></i>
+                    <span>Mở Link Trực Tiếp</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SHADER LAB (MPC WEAPON / WEATHER SIMULATOR) -->
+    <section id="shader-lab" class="section shader-lab-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <span class="badge-num">03</span>
+            <span class="badge-title" data-i18n="section_lab_badge">INTERACTIVE TECH ART SANDBOX</span>
+          </div>
+          <h2 class="section-title" data-i18n="section_lab_title">Mô Phỏng Trực Tiếp: Weather Shader (MPC)</h2>
+          <p class="section-subtitle" data-i18n="section_lab_subtitle">
+            Trải nghiệm thời gian thực hệ thống vật liệu thời tiết trong TA_Test. Kéo các thanh trượt bên dưới để chiêm ngưỡng vật liệu 3D phản ứng ngay lập tức mà không cần biên dịch shader!
+          </p>
+        </div>
+
+        <div class="shader-lab-container glass-panel">
+          <div class="lab-viewport-pane">
+            <div class="viewport-hud-header">
+              <div class="hud-left">
+                <span class="status-recording"></span>
+                <span class="hud-mono">REALTIME VIEWPORT // MAT_DYNAMIC_WEATHER</span>
+              </div>
+              <div class="hud-right">
+                <span class="hud-fps" id="shader-fps">60 FPS</span>
+                <span class="hud-badge">ZERO_RECOMPILE</span>
+              </div>
+            </div>
+
+            <!-- WebGL Canvas for 3D Shader Sphere -->
+            <div class="canvas-3d-wrapper">
+              <canvas id="shader-canvas"></canvas>
+              
+              <!-- Floating viewport metrics overlay -->
+              <div class="canvas-telemetry-hud">
+                <div class="hud-metric">
+                  <span class="metric-lbl">SHADER:</span>
+                  <span class="metric-val">PBR Surface (Metallic / Roughness)</span>
+                </div>
+                <div class="hud-metric">
+                  <span class="metric-lbl">MPC BINDING:</span>
+                  <span class="metric-val" id="hud-mpc-status">MPC_EnvironmentWeather</span>
+                </div>
+                <div class="hud-metric">
+                  <span class="metric-lbl">DRAWCALLS:</span>
+                  <span class="metric-val">1 (Instanced)</span>
+                </div>
+              </div>
+
+              <!-- Interactive rotation hint -->
+              <div class="canvas-interact-hint">
+                <i data-lucide="move-3d"></i>
+                <span data-i18n="hint_rotate_mesh">Kéo chuột để xoay khối 3D</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls & Parameter Panel (Simulating Unreal Engine MPC Sliders) -->
+          <div class="lab-controls-pane">
+            <div class="controls-header">
+              <div class="ctrl-title-row">
+                <i data-lucide="sliders" class="icon-accent"></i>
+                <h4 data-i18n="lab_panel_title">Material Parameter Collection</h4>
+              </div>
+              <span class="param-counter">3 PARAMETERS</span>
+            </div>
+
+            <p class="controls-desc" data-i18n="lab_panel_desc">
+              Hệ thống này ánh xạ trực tiếp cơ chế MPC trong Unreal Engine 5. Thay đổi giá trị scalar tức thì trên toàn bộ đối tượng mà không kích hoạt shader recompilation.
+            </p>
+
+            <div class="sliders-list">
+              <!-- Slider 1: Wetness Level -->
+              <div class="param-slider-group">
+                <div class="param-header">
+                  <div class="param-name">
+                    <i data-lucide="droplets" class="icon-wet"></i>
+                    <span>Wetness Level (Độ ẩm ướt)</span>
+                  </div>
+                  <span class="param-value" id="val-wetness">0.45</span>
+                </div>
+                <input type="range" id="slider-wetness" min="0" max="1" step="0.01" value="0.45" class="custom-slider wet-slider" aria-label="Điều chỉnh độ ẩm ướt">
+                <div class="param-hints">
+                  <span>Khô ráo (0.0)</span>
+                  <span>Ngập nước / Phản xạ cao (1.0)</span>
+                </div>
+              </div>
+
+              <!-- Slider 2: Snow Accumulation -->
+              <div class="param-slider-group">
+                <div class="param-header">
+                  <div class="param-name">
+                    <i data-lucide="snowflake" class="icon-snow"></i>
+                    <span>Snow Accumulation (Tuyết bám)</span>
+                  </div>
+                  <span class="param-value" id="val-snow">0.30</span>
+                </div>
+                <input type="range" id="slider-snow" min="0" max="1" step="0.01" value="0.30" class="custom-slider snow-slider" aria-label="Điều chỉnh độ tuyết bám">
+                <div class="param-hints">
+                  <span>Không tuyết (0.0)</span>
+                  <span>Phủ tuyết dốc đứng (1.0)</span>
+                </div>
+              </div>
+
+              <!-- Slider 3: Freezing Intensity -->
+              <div class="param-slider-group">
+                <div class="param-header">
+                  <div class="param-name">
+                    <i data-lucide="wind" class="icon-freeze"></i>
+                    <span>Freezing / Frost (Đóng băng)</span>
+                  </div>
+                  <span class="param-value" id="val-freeze">0.20</span>
+                </div>
+                <input type="range" id="slider-freeze" min="0" max="1" step="0.01" value="0.20" class="custom-slider freeze-slider" aria-label="Điều chỉnh độ đóng băng">
+                <div class="param-hints">
+                  <span>Nhiệt độ thường (0.0)</span>
+                  <span>Tinh thể băng giá (1.0)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preset Weather Scenarios -->
+            <div class="presets-container">
+              <span class="presets-label" data-i18n="presets_label">Kịch Bản Nhanh (Weather Presets):</span>
+              <div class="preset-buttons">
+                <button class="btn-preset" onclick="applyWeatherPreset('rain')">
+                  <i data-lucide="cloud-rain"></i>
+                  <span data-i18n="preset_rain">Mưa Rào (Heavy Rain)</span>
+                </button>
+                <button class="btn-preset" onclick="applyWeatherPreset('snow')">
+                  <i data-lucide="snowflake"></i>
+                  <span data-i18n="preset_snow">Bão Tuyết (Blizzard)</span>
+                </button>
+                <button class="btn-preset" onclick="applyWeatherPreset('frost')">
+                  <i data-lucide="gem"></i>
+                  <span data-i18n="preset_frost">Đóng Băng (Deep Freeze)</span>
+                </button>
+                <button class="btn-preset" onclick="applyWeatherPreset('clear')">
+                  <i data-lucide="sun"></i>
+                  <span data-i18n="preset_clear">Nắng Ấm (Clear Sky)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Code snippet snippet toggle -->
+            <div class="code-peek-box">
+              <div class="code-peek-header">
+                <span class="code-lang">HLSL / Unreal Material Expression</span>
+                <span class="code-badge">Zero Tick</span>
+              </div>
+              <pre class="code-content"><code>// Real-time Lerp based on MPC Scalar
+float3 BaseColor = Lerp(Albedo, FrostColor, FreezingAmount);
+float Roughness = Lerp(BaseRoughness, 0.05, WetnessAmount);
+float3 Normal = BlendAngleCorrectedNormals(BaseNormal, SnowNormal);</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS MATRIX SECTION -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <span class="badge-num">04</span>
+            <span class="badge-title" data-i18n="section_skills_badge">NĂNG LỰC CHUYÊN MÔN</span>
+          </div>
+          <h2 class="section-title" data-i18n="section_skills_title">Hệ Sinh Thái Kỹ Năng Kỹ Thuật</h2>
+          <p class="section-subtitle" data-i18n="section_skills_subtitle">
+            Sự kết hợp cân bằng giữa lập trình hệ thống, shader đồ họa và tối ưu hóa engine
+          </p>
+        </div>
+
+        <!-- Skills Filter Tabs -->
+        <div class="skills-filter-bar">
+          <button class="filter-tab active" data-filter="all" onclick="filterSkills('all')">
+            <span data-i18n="filter_all">Tất Cả</span>
+          </button>
+          <button class="filter-tab" data-filter="tech-art" onclick="filterSkills('tech-art')">
+            <span>Tech Art & VFX</span>
+          </button>
+          <button class="filter-tab" data-filter="prog" onclick="filterSkills('prog')">
+            <span>Programming & C++</span>
+          </button>
+          <button class="filter-tab" data-filter="gameplay" onclick="filterSkills('gameplay')">
+            <span>Gameplay & Animation</span>
+          </button>
+          <button class="filter-tab" data-filter="tools" onclick="filterSkills('tools')">
+            <span>Tools & Pipeline</span>
+          </button>
+          <button class="filter-tab" data-filter="qa" onclick="filterSkills('qa')">
+            <span>QA, Profiling & Soft Skills</span>
+          </button>
+        </div>
+
+        <div class="skills-grid" id="skills-container">
+          <!-- Tech Art & VFX -->
+          <div class="skill-category-card glass-panel" data-category="tech-art" data-tilt>
+            <div class="category-header">
+              <div class="cat-icon violet"><i data-lucide="sparkles"></i></div>
+              <h3>Tech Art & VFX</h3>
+            </div>
+            <div class="skills-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Custom Shaders & Material Editor</span>
+                  <span class="skill-pct">92%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 92%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Material Parameter Collections (MPC)</span>
+                  <span class="skill-pct">95%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 95%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Niagara GPU Particles & VFX</span>
+                  <span class="skill-pct">88%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 88%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Mutable Character Customization</span>
+                  <span class="skill-pct">85%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 85%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Lumen Dynamic GI & Nanite Workflow</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 90%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Programming Languages -->
+          <div class="skill-category-card glass-panel" data-category="prog" data-tilt>
+            <div class="category-header">
+              <div class="cat-icon cyan"><i data-lucide="code"></i></div>
+              <h3 data-i18n="cat_prog">Programming & Architecture</h3>
+            </div>
+            <div class="skills-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>C++ (Unreal Architecture / CDO)</span>
+                  <span class="skill-pct">88%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 88%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Blueprint Visual Scripting (Zero-Tick)</span>
+                  <span class="skill-pct">96%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 96%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Event-Driven & OOP Architecture</span>
+                  <span class="skill-pct">92%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 92%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>C# / Java / Python</span>
+                  <span class="skill-pct">82%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 82%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>JavaScript & WebGL</span>
+                  <span class="skill-pct">80%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 80%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gameplay & Animation -->
+          <div class="skill-category-card glass-panel" data-category="gameplay" data-tilt>
+            <div class="category-header">
+              <div class="cat-icon green"><i data-lucide="move"></i></div>
+              <h3 data-i18n="cat_gameplay">Gameplay & Animation</h3>
+            </div>
+            <div class="skills-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Anim Blueprint & Blend Spaces</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 90%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Enhanced Input System</span>
+                  <span class="skill-pct">94%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 94%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Gameplay Tags & Data Assets</span>
+                  <span class="skill-pct">92%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 92%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Behavior Trees & AI Logic</span>
+                  <span class="skill-pct">84%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 84%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Control Rig & MetaHuman Retargeting</span>
+                  <span class="skill-pct">86%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 86%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Software -->
+          <div class="skill-category-card glass-panel" data-category="tools" data-tilt>
+            <div class="category-header">
+              <div class="cat-icon amber"><i data-lucide="wrench"></i></div>
+              <h3 data-i18n="cat_tools">Tools & Pipelines</h3>
+            </div>
+            <div class="skills-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Unreal Engine 5 (UE5)</span>
+                  <span class="skill-pct">96%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 96%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Procedural Content Generation (PCG)</span>
+                  <span class="skill-pct">88%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 88%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Editor Utility Wizard (EUW)</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 90%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Sequencer & Cinematics</span>
+                  <span class="skill-pct">89%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 89%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Perforce (P4V) & Git Version Control</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 90%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QA, Testing & Soft Skills -->
+          <div class="skill-category-card glass-panel" data-category="qa" data-tilt>
+            <div class="category-header">
+              <div class="cat-icon cyan"><i data-lucide="shield-check"></i></div>
+              <h3 data-i18n="cat_qa">QA, Profiling & Teamwork</h3>
+            </div>
+            <div class="skills-items">
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Unreal Profiler & GPU Insights</span>
+                  <span class="skill-pct">86%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 86%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Troubleshooting & Black-Box Testing</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 90%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Problem-Solving & Critical Thinking</span>
+                  <span class="skill-pct">95%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 95%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>Teamwork in Game Jam / Studio</span>
+                  <span class="skill-pct">94%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 94%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>English Communication (B1 Vstep)</span>
+                  <span class="skill-pct">85%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 85%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION TIMELINE -->
+    <section id="experience" class="section experience-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <span class="badge-num">05</span>
+            <span class="badge-title" data-i18n="section_exp_badge">HÀNH TRÌNH PHÁT TRIỂN</span>
+          </div>
+          <h2 class="section-title" data-i18n="section_exp_title">Kinh Nghiệm & Học Vấn</h2>
+          <p class="section-subtitle" data-i18n="section_exp_subtitle">
+            Cột mốc thực tập tại studio quốc tế, đào tạo học thuật và các chứng chỉ kỹ năng
+          </p>
+        </div>
+
+        <div class="timeline">
+          <!-- Timeline Node 1: TA_Test Project -->
+          <div class="timeline-item reveal-up">
+            <div class="timeline-marker cyan">
+              <i data-lucide="git-commit"></i>
+            </div>
+            <div class="timeline-content glass-panel" data-tilt>
+              <div class="time-header">
+                <div>
+                  <span class="time-period">JUL 2026 - JUL 2026</span>
+                  <h3 class="time-role">Technical Artist Project: TA_Test</h3>
+                  <span class="time-company">Independent Technical Art Research</span>
+                </div>
+                <span class="tag-status live">Featured Showcase</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp_t1">Thiết kế plugin C++ tích hợp Editor Utility Wizard 5 bước; tự động hóa hoàn toàn quy trình sinh Enemy Blueprint thông qua CDO reflection.</li>
+                <li data-i18n="exp_t2">Xây dựng hệ thống vật liệu thời tiết thời gian thực (độ ẩm ướt, tích tụ tuyết dốc, đóng băng bề mặt) điều khiển bởi Material Parameter Collections (MPC), đảm bảo 0% shader recompile.</li>
+                <li data-i18n="exp_t3">Lập trình Ability System dạng module hướng sự kiện không sử dụng Tick thông qua ActorComponents, Data Assets, Gameplay Tags và Niagara VFX.</li>
+              </ul>
+              <div class="timeline-foot">
+                <a href="https://github.com/Dex-NCuong/TA_Test" target="_blank" rel="noopener noreferrer" class="link-styled">
+                  <i data-lucide="github"></i>
+                  <span>github.com/Dex-NCuong/TA_Test</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Node 2: Sparx* Virtuos -->
+          <div class="timeline-item reveal-up">
+            <div class="timeline-marker amber">
+              <i data-lucide="briefcase"></i>
+            </div>
+            <div class="timeline-content glass-panel" data-tilt>
+              <div class="time-header">
+                <div>
+                  <span class="time-period">MAY 2026 - JUL 2026</span>
+                  <h3 class="time-role">Technical Artist Intern</h3>
+                  <span class="time-company">Sparx* - a Virtuos Studio</span>
+                </div>
+                <span class="tag-status studio">AAA Studio</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp_s1">Hoàn thành khóa huấn luyện chuyên sâu và thực hành trực tiếp quy trình phát triển game chuẩn studio trên Unreal Engine 5.</li>
+                <li data-i18n="exp_s2">Phát triển cơ chế gameplay bằng Blueprint Visual Scripting; tích lũy kinh nghiệm thực tế về Level Design, Chiếu sáng Lumen, Tạo vật liệu và Dựng cảnh Sequencer.</li>
+                <li data-i18n="exp_s3">Ứng dụng Mixamo, MetaHuman, Control Rig tùy biến khung xương và Mutable trong quy trình sáng tạo và diễn hoạt nhân vật 3D.</li>
+                <li data-i18n="exp_s4">Ứng dụng Procedural Content Generation (PCG) để tạo sinh tự động và tối ưu hóa môi trường thế giới mở rộng lớn.</li>
+                <li data-i18n="exp_s5">Làm quen và áp dụng triệt để quy trình quản lý dự án qua Perforce (P4V) theo chuẩn pipeline sản xuất game quốc tế.</li>
+                <li data-i18n="exp_s6">Tham gia chung kết Game Jam: làm việc nhóm phát triển tựa game trong 1 tuần với chủ đề "In Turn" và "Underdog", phụ trách Blueprint Gameplay Logic, Animation Blend Spaces, PCG và Sequencer.</li>
+              </ul>
+              <div class="timeline-foot">
+                <button class="link-styled" onclick="openVideoModal('7S_7sxQaQYA')">
+                  <i data-lucide="youtube"></i>
+                  <span>Workshop Video (Sparx* Virtuos Training)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Node 3: HUTECH University -->
+          <div class="timeline-item reveal-up">
+            <div class="timeline-marker violet">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="timeline-content glass-panel" data-tilt>
+              <div class="time-header">
+                <div>
+                  <span class="time-period">2022 - JUL 2026</span>
+                  <h3 class="time-role" data-i18n="edu_degree">Cử Nhân Kỹ Thuật Phần Mềm</h3>
+                  <span class="time-company">Trường Đại Học Công Nghệ TP.HCM (HUTECH)</span>
+                </div>
+                <span class="tag-status edu">GPA: 3.07 / 4.0</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="edu_b1">Nền tảng vững chắc về Cấu trúc dữ liệu & Giải thuật, Lập trình hướng đối tượng (OOP), Kiến trúc phần mềm và Kiểm thử chất lượng (QA).</li>
+                <li data-i18n="edu_b2">Định hướng nghiên cứu và phát triển chuyên sâu đồ họa máy tính, Game Engine và tối ưu hóa hệ thống thời gian thực.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Node 4: Certifications -->
+          <div class="timeline-item reveal-up">
+            <div class="timeline-marker green">
+              <i data-lucide="award"></i>
+            </div>
+            <div class="timeline-content glass-panel" data-tilt>
+              <div class="time-header">
+                <div>
+                  <span class="time-period">CHỨNG CHỈ & THÀNH TÍCH</span>
+                  <h3 class="time-role">B1 Vstep English Certification</h3>
+                  <span class="time-company">Vietnamese Standardized Test of English Proficiency</span>
+                </div>
+                <span class="tag-status cert">Certified</span>
+              </div>
+              <p class="cert-desc" data-i18n="cert_desc">
+                Khả năng đọc hiểu tài liệu kỹ thuật tiếng Anh chuyên ngành (Unreal Engine documentation, C++ standard libraries, HLSL shader guides) và giao tiếp hiệu quả trong môi trường làm việc studio đa quốc gia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & FOOTER SECTION -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">
+            <span class="badge-num">06</span>
+            <span class="badge-title" data-i18n="section_contact_badge">KẾT NỐI TRỰC TIẾP</span>
+          </div>
+          <h2 class="section-title" data-i18n="section_contact_title">Khởi Động Dự Án Mới Cùng Tôi</h2>
+          <p class="section-subtitle" data-i18n="section_contact_subtitle">
+            Tôi luôn sẵn sàng cho các cơ hội Technical Artist, Game Developer toàn thời gian hoặc dự án tự do
+          </p>
+        </div>
+
+        <div class="contact-card-wrapper glass-panel reveal-up">
+          <div class="contact-terminal-header">
+            <div class="term-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="term-title">terminal://contact/initiate_handshake</span>
+            <span class="term-status">ONLINE // LISTENING</span>
+          </div>
+
+          <div class="contact-grid">
+            <!-- Left Info Panel -->
+            <div class="contact-info-pane">
+              <div class="contact-avatar-bar">
+                <img src="assets/images/avatar.jpg" alt="Đào Nhật Cường" class="contact-avatar-img">
+                <div class="contact-avatar-info">
+                  <strong>ĐÀO NHẬT CƯỜNG</strong>
+                  <span>Technical Artist & Unreal Engine Developer</span>
+                </div>
+              </div>
+
+              <h3 class="contact-heading" data-i18n="contact_heading">Thông Tin Liên Lạc</h3>
+              <p class="contact-lead" data-i18n="contact_lead">
+                Bạn đang tìm kiếm một Technical Artist hiểu sâu cả lập trình logic và mỹ thuật shader trên UE5? Hãy liên hệ ngay với tôi qua các kênh dưới đây:
+              </p>
+
+              <div class="contact-methods">
+                <!-- Email Copyable -->
+                <div class="contact-item" onclick="copyToClipboard('daonhatcuong2004@gmail.com', 'Đã sao chép Email!')">
+                  <div class="contact-icon cyan"><i data-lucide="mail"></i></div>
+                  <div class="contact-text">
+                    <span class="contact-label">Email:</span>
+                    <strong class="contact-val">daonhatcuong2004@gmail.com</strong>
+                  </div>
+                  <button class="copy-chip" title="Sao chép Email" aria-label="Sao chép Email">
+                    <i data-lucide="copy"></i>
+                  </button>
+                </div>
+
+                <!-- Phone Copyable -->
+                <div class="contact-item" onclick="copyToClipboard('+84824503820', 'Đã sao chép Số Điện Thoại!')">
+                  <div class="contact-icon green"><i data-lucide="phone"></i></div>
+                  <div class="contact-text">
+                    <span class="contact-label">Điện thoại / Zalo:</span>
+                    <strong class="contact-val">+84 824 503 820</strong>
+                  </div>
+                  <button class="copy-chip" title="Sao chép SĐT" aria-label="Sao chép SĐT">
+                    <i data-lucide="copy"></i>
+                  </button>
+                </div>
+
+                <!-- Location -->
+                <div class="contact-item">
+                  <div class="contact-icon violet"><i data-lucide="map-pin"></i></div>
+                  <div class="contact-text">
+                    <span class="contact-label">Vị trí làm việc:</span>
+                    <strong class="contact-val">Thành phố Hồ Chí Minh, Việt Nam</strong>
+                  </div>
+                </div>
+
+                <!-- LinkedIn Direct -->
+                <a href="https://linkedin.com/in/cường-đào-nhật-884b32335" target="_blank" rel="noopener noreferrer" class="contact-item link-item">
+                  <div class="contact-icon amber"><i data-lucide="linkedin"></i></div>
+                  <div class="contact-text">
+                    <span class="contact-label">LinkedIn Profile:</span>
+                    <strong class="contact-val">linkedin.com/in/cường-đào-nhật</strong>
+                  </div>
+                  <i data-lucide="external-link" class="arrow-icon"></i>
+                </a>
+
+                <!-- GitHub Direct -->
+                <a href="https://github.com/Dex-NCuong" target="_blank" rel="noopener noreferrer" class="contact-item link-item">
+                  <div class="contact-icon cyan"><i data-lucide="github"></i></div>
+                  <div class="contact-text">
+                    <span class="contact-label">GitHub Repository:</span>
+                    <strong class="contact-val">github.com/Dex-NCuong</strong>
+                  </div>
+                  <i data-lucide="external-link" class="arrow-icon"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Quick Message Form / Direct Mail Trigger -->
+            <div class="contact-form-pane">
+              <h4 class="form-title" data-i18n="form_title">Gửi Tin Nhắn Nhanh</h4>
+              <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                  <label for="contact-name" data-i18n="form_name">Tên hoặc Studio của bạn:</label>
+                  <input type="text" id="contact-name" required placeholder="Ví dụ: Studio Recruiter / Lead Artist" class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-email" data-i18n="form_email">Email liên hệ lại:</label>
+                  <input type="email" id="contact-email" required placeholder="your.email@studio.com" class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-role" data-i18n="form_role">Cơ hội công việc / Dự án:</label>
+                  <select id="contact-role" class="form-input">
+                    <option value="Technical Artist">Technical Artist (Full-time / Intern)</option>
+                    <option value="Unreal Engine Developer">Unreal Engine 5 Game Developer</option>
+                    <option value="Shader / VFX Artist">Shader / Niagara VFX Specialist</option>
+                    <option value="Freelance / Consultation">Dự án Tự do / Trao đổi kỹ thuật</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-msg" data-i18n="form_msg">Nội dung tin nhắn:</label>
+                  <textarea id="contact-msg" rows="4" required placeholder="Chào Cường, chúng tôi rất ấn tượng với dự án TA_Test và khóa đào tạo tại Sparx* của bạn..." class="form-input"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                  <i data-lucide="send"></i>
+                  <span data-i18n="btn_send_mail">Gửi Tin Nhắn (Mở Email Client)</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="logo-box">
+          <span class="logo-bracket">[</span>
+          <span class="logo-text">NC</span>
+          <span class="logo-bracket">]</span>
+        </div>
+        <p class="footer-copy">
+          &copy; 2026 <strong>Đào Nhật Cường (Dao Nhat Cuong)</strong>. Designed with Unreal Engine 5 aesthetic, Vanilla CSS & WebGL.
+        </p>
+      </div>
+
+      <div class="footer-right">
+        <div class="engine-signature">
+          <span class="sig-bullet"></span>
+          <span>BUILT FOR TECHNICAL ARTISTRY & GAME DEVELOPMENT</span>
+        </div>
+        <a href="#hero" class="back-to-top" title="Về đầu trang" aria-label="Về đầu trang">
+          <span>TOP</span>
+          <i data-lucide="arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- VIDEO MODAL (SPARX* WORKSHOP) -->
+  <div id="video-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <i data-lucide="youtube" class="modal-yt-icon"></i>
+          <span id="modal-title">Sparx* - a Virtuos Studio // Training Workshop</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeVideoModal()" aria-label="Đóng video">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="iframe-responsive-container">
+          <iframe id="youtube-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="modal-hint">Video khóa huấn luyện thực chiến tại Sparx* - a Virtuos Studio</span>
+        <a href="https://www.youtube.com/watch?v=7S_7sxQaQYA" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+          <i data-lucide="external-link"></i>
+          <span>Mở trên YouTube</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor Glow Target -->
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Main JavaScript Application -->
+  <script src="main.js"></script>
+</body>
+</html>
