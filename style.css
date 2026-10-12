@@ -1315,6 +1315,74 @@ main {
 /* ==========================================================================
    PROJECTS SECTION
    ========================================================================== */
+.project-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 38px;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(15, 20, 32, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.filter-btn:hover {
+  border-color: var(--border-cyan);
+  color: var(--text-bright);
+  transform: translateY(-2px);
+}
+
+.filter-btn:hover svg {
+  color: var(--accent-cyan);
+}
+
+.filter-btn.active {
+  background: rgba(0, 245, 255, 0.12);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.25);
+}
+
+.filter-btn.active svg {
+  color: var(--accent-cyan);
+}
+
+.filter-count {
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.filter-btn.active .filter-count {
+  background: var(--accent-cyan);
+  color: #06070a;
+}
+
 .projects-container {
   display: flex;
   flex-direction: column;
@@ -1325,6 +1393,11 @@ main {
   padding: 36px;
   overflow: hidden;
   position: relative;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.project-card.filter-hidden {
+  display: none !important;
 }
 
 .project-grid {
@@ -1420,6 +1493,7 @@ main {
   border-radius: 50%;
 }
 .tag-dot.amber { background: var(--accent-amber); }
+.tag-dot.emerald { background: var(--accent-emerald); box-shadow: 0 0 8px var(--accent-emerald); }
 
 /* Video play button for Sparx* item */
 .video-thumbnail-container {

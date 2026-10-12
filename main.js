@@ -642,6 +642,15 @@ const i18n = {
     section_proj_badge: 'CÁC DỰ ÁN TIÊU BIỂU',
     section_proj_title: 'Công Nghệ & Kỹ Thuật Đã Triển Khai',
     section_proj_subtitle: 'Khám phá các giải pháp kỹ thuật, hệ thống shader và quy trình tự động hóa thực chiến',
+    game_status: 'ĐANG PHÁT TRIỂN // PROTOTYPE',
+    game_summary: 'Dự án game hành động nhập vai góc nhìn thứ ba lấy cảm hứng từ Souls-like, tôi phát triển chủ yếu bằng Blueprint trên Unreal Engine 5.8. Prototype tập trung vào chiến đấu katana, quản lý stamina và nhịp né đòn, kết hợp animation nhân vật với màn chơi Snow Shrine để kiểm thử và tinh chỉnh trải nghiệm gameplay.',
+    game_feat1_title: 'Katana Combat & Stamina',
+    game_feat1_desc: 'Xây dựng combo đòn nhẹ/nặng, tiêu hao stamina, né đòn với khung bất tử (i-frames), block/parry và khóa mục tiêu. Hệ thống poise/stagger hỗ trợ phản ứng trúng đòn và tạo nhịp giao tranh.',
+    game_feat2_title: 'Locomotion, Enemy & Mini-boss Prototype',
+    game_feat2_desc: 'Kết nối Enhanced Input, Animation Blueprint và Blend Spaces cho di chuyển và chuyển trạng thái nhân vật. Phát triển prototype địch và mini-boss để kiểm thử animation, phản ứng chiến đấu và nhịp độ giao tranh.',
+    game_feat3_title: 'Snow Shrine & Gameplay Progression',
+    game_feat3_desc: 'Dựng màn chơi Snow Shrine làm môi trường kiểm thử, kết hợp prototype bonfire/checkpoint, HUD, inventory và tiến trình nhân vật. Các hệ thống đang được tinh chỉnh qua playtest để hoàn thiện vòng lặp khám phá, chiến đấu và hồi phục.',
+    game_btn_github: 'Xem GitHub GameProject',
     btn_try_live: 'Thử Nghiệm Tương Tác Ngay',
     p1_summary: 'Bộ công cụ và framework kỹ thuật toàn diện giải quyết 3 bài toán lớn trong game pipeline: tự động hóa công cụ thiết kế qua C++ plugin, hệ thống vật liệu thời tiết chuyển đổi động tức thời, và hệ thống kỹ năng gameplay hướng sự kiện tối ưu hiệu năng không sử dụng Tick.',
     p1_feat1_title: 'Pipeline Tool Development (C++ & EUW)',
@@ -660,6 +669,32 @@ const i18n = {
     p2_feat3_title: 'Game Jam Champion: Gameplay Logic, PCG & Sequencer',
     p2_feat3_desc: 'Đảm nhiệm toàn bộ Blueprint Gameplay Logic, Animation Blend Spaces, kiến trúc môi trường Procedural Content Generation (PCG) và dựng Sequencer hoàn chỉnh trong 7 ngày.',
     btn_watch_video: 'Xem Video Workshop Trên YouTube',
+    btn_github_euw: 'Xem GitHub EUW_Tool',
+    btn_github_teashop: 'Xem GitHub TeaShop',
+    btn_docs: 'Tài Liệu Chi Tiết',
+    filter_proj_all: 'Tất Cả Dự Án',
+    filter_proj_ue5: 'Unreal Engine 5 & Tech Art',
+    filter_proj_web: 'Node.js & Fullstack Web',
+    p3_summary: 'Hệ thống công cụ tiện ích biên tập mở rộng (Editor Utility Widget) được xây dựng trên Unreal Engine 5, cung cấp giải pháp tự động hóa sắp đặt không gian màn chơi, quản lý lưới vật thể và tăng tốc độ thiết kế thế giới 3D thực tế trên bản đồ thử nghiệm Island Level.',
+    p3_feat1_title: 'Level Utility Widget (EUW_LevelTool)',
+    p3_feat1_desc: 'Phát triển UI Editor Utility Widget tích hợp sâu trong UE5 Viewport, hỗ trợ Level Designer kiểm soát nhanh việc đặt asset, căn gióng tọa độ, điều chỉnh độ xoay ngẫu nhiên và quản lý thông số màn chơi trong thời gian thực.',
+    p3_feat2_title: 'Môi Trường Thử Nghiệm Island Level',
+    p3_feat2_desc: 'Xây dựng thế giới đảo IslandLevel.umap hoàn chỉnh tích hợp mô-đun Level Prototyping, bộ tài nguyên Fab và ThirdPerson Character để trực tiếp kiểm thử độ khả dụng và tính công thái học của Tool.',
+    p3_feat3_title: 'Hệ Thống Hạt Niagara & Cấu Trúc Pipeline Chuẩn',
+    p3_feat3_desc: 'Kết hợp hệ thống hạt thời gian thực Niagara VFX, tối ưu hóa quy chuẩn phân cấp thư mục (Config, Content, Tools) giúp việc mở rộng công cụ và cộng tác trong studio diễn ra mượt mà.',
+    p4_summary: 'Nền tảng thương mại điện tử chuyên biệt về trà được phát triển fullstack theo kiến trúc MERN (MongoDB, Express, React, Node.js), tích hợp trợ lý ảo AI Chatbot tư vấn bán hàng thông minh (xử lý ngôn ngữ tự nhiên NLP) và cổng thanh toán trực tuyến bảo mật VNPAY Sandbox.',
+    p4_feat1_title: 'Backend Node.js & RESTful API Architecture',
+    p4_feat1_desc: 'Xây dựng backend mạnh mẽ với Node.js và Express, quản lý dữ liệu trên MongoDB Atlas & Mongoose, xác thực phân quyền qua JWT và tích hợp CORS / biến môi trường chuẩn sản phẩm thương mại.',
+    p4_feat2_title: 'Trợ Lý Ảo Bán Hàng AI Chatbot (NLP Thông Minh)',
+    p4_feat2_desc: 'Phát triển Chatbot tương tác tự nhiên: tự động tìm trà theo đặc tính/vùng miền, lọc theo ngân sách ("dưới 500k"), cho phép khách hàng chọn trọng lượng gói và thêm giỏ hàng/thanh toán ngay trong khung chat.',
+    p4_feat3_title: 'Cổng Thanh Toán VNPAY & Giao Diện React Hiện Đại',
+    p4_feat3_desc: 'Tích hợp cổng thanh toán VNPAY Sandbox bảo mật cao. Giao diện frontend xây dựng bằng React (Vite) kết hợp Tailwind CSS, Framer Motion tạo hiệu ứng mượt mà và tối ưu trải nghiệm khách hàng.',
+    exp_euw1: 'Phát triển Editor Utility Widget (EUW_LevelTool.uasset) trực quan trên UE5, tăng tốc độ sắp đặt môi trường và quản lý lưới thế giới trong Viewport.',
+    exp_euw2: 'Xây dựng thế giới thử nghiệm IslandLevel.umap tích hợp modular level prototyping, ThirdPerson navigation và bộ asset từ Fab marketplace.',
+    exp_euw3: 'Đóng gói Niagara VFX và chuẩn hóa cấu trúc dự án game studio chuyên nghiệp.',
+    exp_tea1: 'Thiết kế kiến trúc RESTful API hiệu năng cao với Node.js và Express.js, lưu trữ cơ sở dữ liệu trên MongoDB Atlas và xác thực bảo mật JWT.',
+    exp_tea2: 'Phát triển AI Sales Chatbot thông minh ứng dụng NLP keyword/rule-based: tìm trà thông minh, gợi ý theo ngân sách và thêm giỏ hàng siêu tốc.',
+    exp_tea3: 'Tích hợp cổng thanh toán trực tuyến bảo mật VNPAY Sandbox (HMAC-SHA512) và xây dựng frontend React (Vite) tối ưu hóa giao diện người dùng.',
     section_lab_badge: 'INTERACTIVE TECH ART SANDBOX',
     section_lab_title: 'Mô Phỏng Trực Tiếp: Weather Shader (MPC)',
     section_lab_subtitle: 'Trải nghiệm thời gian thực hệ thống vật liệu thời tiết trong TA_Test. Kéo các thanh trượt bên dưới để chiêm ngưỡng vật liệu 3D phản ứng ngay lập tức mà không cần biên dịch shader!',
@@ -691,6 +726,12 @@ const i18n = {
     exp_s4: 'Ứng dụng Procedural Content Generation (PCG) để tạo sinh tự động và tối ưu hóa môi trường thế giới mở rộng lớn.',
     exp_s5: 'Làm quen và áp dụng triệt để quy trình quản lý dự án qua Perforce (P4V) theo chuẩn pipeline sản xuất game quốc tế.',
     exp_s6: 'Tham gia chung kết Game Jam: làm việc nhóm phát triển tựa game trong 1 tuần với chủ đề "In Turn" và "Underdog", phụ trách Blueprint Gameplay Logic, Animation Blend Spaces, PCG và Sequencer.',
+    exp_euw1: 'Phát triển Editor Utility Widget (EUW_LevelTool.uasset) trực quan trên UE5, tăng tốc độ sắp đặt môi trường và quản lý lưới thế giới trong Viewport.',
+    exp_euw2: 'Xây dựng thế giới thử nghiệm IslandLevel.umap tích hợp modular level prototyping, ThirdPerson navigation và bộ asset từ Fab marketplace.',
+    exp_euw3: 'Đóng gói Niagara VFX và chuẩn hóa cấu trúc dự án game studio chuyên nghiệp.',
+    exp_tea1: 'Thiết kế kiến trúc RESTful API hiệu năng cao với Node.js và Express.js, lưu trữ cơ sở dữ liệu trên MongoDB Atlas và xác thực bảo mật JWT.',
+    exp_tea2: 'Phát triển AI Sales Chatbot thông minh ứng dụng NLP keyword/rule-based: tìm trà thông minh, gợi ý theo ngân sách và thêm giỏ hàng siêu tốc.',
+    exp_tea3: 'Tích hợp cổng thanh toán trực tuyến bảo mật VNPAY Sandbox (HMAC-SHA512) và xây dựng frontend React (Vite) tối ưu hóa giao diện người dùng.',
     edu_degree: 'Cử Nhân Kỹ Thuật Phần Mềm',
     edu_b1: 'Nền tảng vững chắc về Cấu trúc dữ liệu & Giải thuật, Lập trình hướng đối tượng (OOP), Kiến trúc phần mềm và Kiểm thử chất lượng (QA).',
     edu_b2: 'Định hướng nghiên cứu và phát triển chuyên sâu đồ họa máy tính, Game Engine và tối ưu hóa hệ thống thời gian thực.',
@@ -752,6 +793,15 @@ const i18n = {
     section_proj_badge: 'FEATURED PROJECTS',
     section_proj_title: 'Proven Engineering & Visual Systems',
     section_proj_subtitle: 'Explore real-world technical solutions, dynamic shader architectures, and automation pipelines',
+    game_status: 'IN DEVELOPMENT // PROTOTYPE',
+    game_summary: 'A third-person action RPG prototype inspired by Souls-like combat, developed primarily with Blueprint in Unreal Engine 5.8. I focus on katana combat, stamina management, and dodge timing, combining character animation with the Snow Shrine test level to playtest and refine the gameplay experience.',
+    game_feat1_title: 'Katana Combat & Stamina',
+    game_feat1_desc: 'Built light/heavy attack combos, stamina costs, dodge invincibility frames (i-frames), block/parry, and target lock-on. Poise/stagger mechanics support hit reactions and shape the rhythm of combat.',
+    game_feat2_title: 'Locomotion, Enemy & Mini-boss Prototype',
+    game_feat2_desc: 'Connected Enhanced Input, Animation Blueprint, and Blend Spaces for character movement and state transitions. Developed enemy and mini-boss prototypes to test animation, combat reactions, and encounter pacing.',
+    game_feat3_title: 'Snow Shrine & Gameplay Progression',
+    game_feat3_desc: 'Built Snow Shrine as a gameplay test environment with bonfire/checkpoint, HUD, inventory, and character progression prototypes. These systems are being refined through playtesting to develop the exploration, combat, and recovery loop.',
+    game_btn_github: 'View GameProject on GitHub',
     btn_try_live: 'Try Live Interactive Demo',
     p1_summary: 'A comprehensive technical framework solving 3 critical challenges in modern game production: designer workflow automation via C++ EUW, real-time dynamic weather materials with zero recompilation, and a high-performance zero-tick event-driven gameplay ability system.',
     p1_feat1_title: 'Pipeline Tool Development (C++ & EUW)',
@@ -770,6 +820,32 @@ const i18n = {
     p2_feat3_title: 'Game Jam Champion: Gameplay Logic, PCG & Sequencer',
     p2_feat3_desc: 'Led Blueprint gameplay mechanics, Animation Blend Spaces, Procedural Content Generation (PCG) environment graphs, and cinematic Sequencer integration within 7 days.',
     btn_watch_video: 'Watch Workshop Video on YouTube',
+    btn_github_euw: 'View EUW_Tool on GitHub',
+    btn_github_teashop: 'View TeaShop on GitHub',
+    btn_docs: 'Documentation & Details',
+    filter_proj_all: 'All Projects',
+    filter_proj_ue5: 'Unreal Engine 5 & Tech Art',
+    filter_proj_web: 'Node.js & Fullstack Web',
+    p3_summary: 'An advanced Editor Utility Widget (EUW) tool suite crafted inside Unreal Engine 5, delivering in-viewport layout automation, procedural actor snapping, and rapid world-building iteration in the custom Island Level testbed.',
+    p3_feat1_title: 'Level Utility Widget (EUW_LevelTool)',
+    p3_feat1_desc: 'Engineered an in-editor utility widget (EUW_LevelTool.uasset) that grants Level Designers rapid control over asset spawning, transform alignment, randomized yaw, and real-time level tweaking inside the 3D viewport.',
+    p3_feat2_title: 'Island Level Prototyping & Layout',
+    p3_feat2_desc: 'Designed the IslandLevel.umap interactive world incorporating modular Level Prototyping meshes, Fab marketplace assets, and ThirdPerson character navigation for rigorous tool testing.',
+    p3_feat3_title: 'Niagara VFX & Clean Studio Pipeline',
+    p3_feat3_desc: 'Integrated real-time Niagara particle systems and structured AAA project hierarchies (Island.uproject, Config, Content) for seamless multi-discipline studio collaboration.',
+    p4_summary: 'A fullstack e-commerce tea platform engineered on the MERN stack (MongoDB, Express, React, Node.js), powered by an intelligent NLP AI sales assistant chatbot and integrated with secure VNPAY Sandbox payment gateway.',
+    p4_feat1_title: 'Node.js & Express RESTful API Backend',
+    p4_feat1_desc: 'Engineered a high-performance backend using Node.js & Express.js, cloud database persistence with MongoDB Atlas & Mongoose ODM, JWT authentication, and commercial CORS security.',
+    p4_feat2_title: 'Intelligent AI Sales Assistant (NLP)',
+    p4_feat2_desc: 'Implemented an interactive NLP chatbot with custom keyword and rule-based parsing: smart tea search by region/flavor, budget filtering, weight packaging selection, and instant in-chat cart checkout.',
+    p4_feat3_title: 'VNPAY Online Payment & Modern React UI',
+    p4_feat3_desc: 'Integrated secure VNPAY Sandbox payment processing with HMAC-SHA512 checksums. Crafted an aesthetic frontend with React (Vite), Tailwind CSS, Framer Motion animations, and Lucide icons.',
+    exp_euw1: 'Developed intuitive Editor Utility Widget (EUW_LevelTool.uasset) in UE5, accelerating viewport scene assembly and grid management.',
+    exp_euw2: 'Constructed the IslandLevel.umap test map combining modular prototyping meshes, ThirdPerson navigation, and Fab assets.',
+    exp_euw3: 'Bundled Niagara VFX and standardized studio-grade UE5 project organization.',
+    exp_tea1: 'Architected RESTful API backend with Node.js & Express.js, cloud database on MongoDB Atlas, and JWT authentication.',
+    exp_tea2: 'Built NLP-driven AI Sales Chatbot: semantic tea discovery, budget filtering, weight selection, and immediate cart addition.',
+    exp_tea3: 'Integrated VNPAY Sandbox payment gateway (HMAC-SHA512) and responsive React (Vite) frontend with Tailwind CSS.',
     section_lab_badge: 'INTERACTIVE TECH ART SANDBOX',
     section_lab_title: 'Live Real-Time Weather Shader (MPC)',
     section_lab_subtitle: 'Interact live with the weather material system from TA_Test. Drag the sliders below to witness immediate 3D PBR surface reactions without any shader recompilation!',
@@ -1268,6 +1344,42 @@ function setupSfxToggle() {
 }
 
 /* ==========================================================================
+   PROJECT CATEGORY FILTERS
+   ========================================================================== */
+function setupProjectFilters() {
+  const filterBtns = document.querySelectorAll('.project-filters .filter-btn');
+  const projectCards = document.querySelectorAll('.projects-container .project-card');
+  if (!filterBtns.length || !projectCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      playSound('click');
+      const filter = btn.getAttribute('data-filter');
+
+      // Update button active states
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Filter project cards
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          card.classList.remove('filter-hidden');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(15px)';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 30);
+        } else {
+          card.classList.add('filter-hidden');
+        }
+      });
+    });
+  });
+}
+
+/* ==========================================================================
    INITIALIZATION ON DOM READY
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1280,6 +1392,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupLanguageSwitcher();
   setupSfxToggle();
   setupMobileMenu();
+  setupProjectFilters();
   initHeroTyping();
   initCustomCursor();
   initCardTilt();
@@ -1291,5 +1404,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initShaderLab();
   setupShaderControls();
 
-  console.log("%c[SYSTEM]%c Dao Nhat Cuong - Unreal Engine 5 Tech Art Portfolio loaded.", "color: #00f5ff; font-weight: bold;", "color: #94a3b8;");
+  console.log("%c[SYSTEM]%c Dao Nhat Cuong - Unreal Engine 5 Tech Art & Fullstack Portfolio loaded.", "color: #00f5ff; font-weight: bold;", "color: #94a3b8;");
 });

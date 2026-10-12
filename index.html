@@ -419,9 +419,106 @@
           </p>
         </div>
 
+        <!-- Interactive Project Category Filter -->
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all" aria-label="Hiển thị tất cả dự án">
+            <i data-lucide="layers"></i>
+            <span data-i18n="filter_proj_all">Tất Cả Dự Án</span>
+            <span class="filter-count">5</span>
+          </button>
+          <button class="filter-btn" data-filter="ue5" aria-label="Lọc dự án Unreal Engine & Tech Art">
+            <i data-lucide="gamepad-2"></i>
+            <span data-i18n="filter_proj_ue5">Unreal Engine 5 & Tech Art</span>
+            <span class="filter-count">4</span>
+          </button>
+          <button class="filter-btn" data-filter="web" aria-label="Lọc dự án Node.js & Fullstack Web">
+            <i data-lucide="server"></i>
+            <span data-i18n="filter_proj_web">Node.js & Fullstack Web</span>
+            <span class="filter-count">1</span>
+          </button>
+        </div>
+
         <div class="projects-container">
+          <!-- GameProject: Souls-like Action RPG Prototype -->
+          <article class="project-card glass-panel reveal-up" id="project-gameproject" data-category="ue5" data-tilt>
+            <div class="card-border-glow"></div>
+            <div class="project-grid">
+              <div class="project-media">
+                <div class="media-wrapper">
+                  <img src="assets/images/game-project.png" alt="GameProject third-person gameplay prototype in Unreal Engine 5" class="project-img" loading="lazy">
+                  <div class="project-status-tag">
+                    <span class="tag-dot"></span>
+                    <span data-i18n="game_status">ĐANG PHÁT TRIỂN // PROTOTYPE</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-details">
+                <div class="project-header-row">
+                  <div>
+                    <span class="proj-category">UNREAL ENGINE 5.8 • BLUEPRINT • GAMEPLAY</span>
+                    <h3 class="project-name">GameProject — Souls-like Action RPG</h3>
+                  </div>
+                  <a href="https://github.com/Dex-NCuong/GameProject" target="_blank" rel="noopener noreferrer" class="proj-link-btn" title="View GitHub Repository" aria-label="Xem kho lưu trữ GameProject trên GitHub">
+                    <i data-lucide="github"></i>
+                  </a>
+                </div>
+
+                <p class="project-summary" data-i18n="game_summary">
+                  Dự án game hành động nhập vai góc nhìn thứ ba lấy cảm hứng từ Souls-like, tôi phát triển chủ yếu bằng Blueprint trên Unreal Engine 5.8. Prototype tập trung vào chiến đấu katana, quản lý stamina và nhịp né đòn, kết hợp animation nhân vật với màn chơi Snow Shrine để kiểm thử và tinh chỉnh trải nghiệm gameplay.
+                </p>
+
+                <div class="tech-breakdown-list">
+                  <div class="tech-feature-card">
+                    <div class="feature-icon cyan"><i data-lucide="swords"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="game_feat1_title">Katana Combat & Stamina</strong>
+                      <p data-i18n="game_feat1_desc">Xây dựng combo đòn nhẹ/nặng, tiêu hao stamina, né đòn với khung bất tử (i-frames), block/parry và khóa mục tiêu. Hệ thống poise/stagger hỗ trợ phản ứng trúng đòn và tạo nhịp giao tranh.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon violet"><i data-lucide="activity"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="game_feat2_title">Locomotion, Enemy & Mini-boss Prototype</strong>
+                      <p data-i18n="game_feat2_desc">Kết nối Enhanced Input, Animation Blueprint và Blend Spaces cho di chuyển và chuyển trạng thái nhân vật. Phát triển prototype địch và mini-boss để kiểm thử animation, phản ứng chiến đấu và nhịp độ giao tranh.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon green"><i data-lucide="flame"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="game_feat3_title">Snow Shrine & Gameplay Progression</strong>
+                      <p data-i18n="game_feat3_desc">Dựng màn chơi Snow Shrine làm môi trường kiểm thử, kết hợp prototype bonfire/checkpoint, HUD, inventory và tiến trình nhân vật. Các hệ thống đang được tinh chỉnh qua playtest để hoàn thiện vòng lặp khám phá, chiến đấu và hồi phục.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-tags">
+                  <span class="tag">Unreal Engine 5.8</span>
+                  <span class="tag">Blueprint</span>
+                  <span class="tag">Enhanced Input</span>
+                  <span class="tag">Animation Blueprint</span>
+                  <span class="tag">Souls-like Combat</span>
+                  <span class="tag">UMG / HUD</span>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://github.com/Dex-NCuong/GameProject" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <i data-lucide="github"></i>
+                    <span data-i18n="game_btn_github">Xem GitHub GameProject</span>
+                  </a>
+                  <a href="https://github.com/Dex-NCuong/GameProject#readme" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i data-lucide="external-link"></i>
+                    <span data-i18n="btn_docs">Tài Liệu Chi Tiết</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <!-- Project 1: TA_Test -->
-          <article class="project-card glass-panel reveal-up" id="project-ta-test" data-tilt>
+          <article class="project-card glass-panel reveal-up" id="project-ta-test" data-category="ue5" data-tilt>
             <div class="card-border-glow"></div>
             <div class="project-grid">
               <div class="project-media">
@@ -505,8 +602,93 @@
             </div>
           </article>
 
-          <!-- Project 2: Sparx* - a Virtuos Studio Internship & Game Jam -->
-          <article class="project-card glass-panel reveal-up" id="project-sparx" data-tilt>
+          <!-- Project 2: EUW_Tool -->
+          <article class="project-card glass-panel reveal-up" id="project-euw-tool" data-category="ue5" data-tilt>
+            <div class="card-border-glow"></div>
+            <div class="project-grid">
+              <div class="project-media">
+                <div class="media-wrapper">
+                  <img src="assets/images/euw-tool.jpg" alt="Unreal Engine 5 Level Utility Tool Demo" class="project-img">
+                  <div class="media-overlay">
+                    <a href="https://github.com/Dex-NCuong/EUW_Tool" target="_blank" rel="noopener noreferrer" class="preview-btn" aria-label="Xem kho lưu trữ EUW_Tool trên GitHub">
+                      <i data-lucide="github"></i>
+                      <span data-i18n="btn_github_euw">Xem GitHub EUW_Tool</span>
+                    </a>
+                  </div>
+                  <div class="project-status-tag">
+                    <span class="tag-dot"></span>
+                    <span>UE5.4 TOOL // OPEN SOURCE</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-details">
+                <div class="project-header-row">
+                  <div>
+                    <span class="proj-category">UNREAL ENGINE 5 • EDITOR UTILITY WIDGET • LEVEL DESIGN</span>
+                    <h3 class="project-name">Level Utility Tool (EUW_Tool)</h3>
+                  </div>
+                  <a href="https://github.com/Dex-NCuong/EUW_Tool" target="_blank" rel="noopener noreferrer" class="proj-link-btn" title="View GitHub Repository" aria-label="Xem mã nguồn trên GitHub">
+                    <i data-lucide="github"></i>
+                  </a>
+                </div>
+
+                <p class="project-summary" data-i18n="p3_summary">
+                  Hệ thống công cụ tiện ích biên tập mở rộng (Editor Utility Widget) được xây dựng trên Unreal Engine 5, cung cấp giải pháp tự động hóa sắp đặt không gian màn chơi, quản lý lưới vật thể và tăng tốc độ thiết kế thế giới 3D thực tế trên bản đồ thử nghiệm Island Level.
+                </p>
+
+                <!-- Tech Breakdown -->
+                <div class="tech-breakdown-list">
+                  <div class="tech-feature-card">
+                    <div class="feature-icon cyan"><i data-lucide="sliders"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p3_feat1_title">Level Utility Widget (EUW_LevelTool)</strong>
+                      <p data-i18n="p3_feat1_desc">Phát triển UI Editor Utility Widget tích hợp sâu trong UE5 Viewport, hỗ trợ Level Designer kiểm soát nhanh việc đặt asset, căn gióng tọa độ, điều chỉnh độ xoay ngẫu nhiên và quản lý thông số màn chơi trong thời gian thực.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon green"><i data-lucide="map-pin"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p3_feat2_title">Môi Trường Thử Nghiệm Island Level</strong>
+                      <p data-i18n="p3_feat2_desc">Xây dựng thế giới đảo IslandLevel.umap hoàn chỉnh tích hợp mô-đun Level Prototyping, bộ tài nguyên Fab và ThirdPerson Character để trực tiếp kiểm thử độ khả dụng và tính công thái học của Tool.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon violet"><i data-lucide="sparkles"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p3_feat3_title">Hệ Thống Hạt Niagara & Cấu Trúc Pipeline Chuẩn</strong>
+                      <p data-i18n="p3_feat3_desc">Kết hợp hệ thống hạt thời gian thực Niagara VFX, tối ưu hóa quy chuẩn phân cấp thư mục (Config, Content, Tools) giúp việc mở rộng công cụ và cộng tác trong studio diễn ra mượt mà.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-tags">
+                  <span class="tag">Unreal Engine 5</span>
+                  <span class="tag">Editor Utility Widget (EUW)</span>
+                  <span class="tag">Level Prototyping</span>
+                  <span class="tag">Niagara VFX</span>
+                  <span class="tag">ThirdPerson Blueprint</span>
+                  <span class="tag">Asset Pipeline</span>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://github.com/Dex-NCuong/EUW_Tool" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <i data-lucide="github"></i>
+                    <span data-i18n="btn_github_euw">Xem GitHub EUW_Tool</span>
+                  </a>
+                  <a href="https://github.com/Dex-NCuong/EUW_Tool#readme" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i data-lucide="external-link"></i>
+                    <span data-i18n="btn_docs">Tài Liệu Chi Tiết</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Sparx* - a Virtuos Studio Internship & Game Jam -->
+          <article class="project-card glass-panel reveal-up" id="project-sparx" data-category="ue5" data-tilt>
             <div class="card-border-glow"></div>
             <div class="project-grid">
               <div class="project-media">
@@ -589,6 +771,93 @@
                   <a href="https://www.youtube.com/watch?v=7S_7sxQaQYA" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                     <i data-lucide="external-link"></i>
                     <span>Mở Link Trực Tiếp</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: WebTra (TeaShop) -->
+          <article class="project-card glass-panel reveal-up" id="project-teashop" data-category="web" data-tilt>
+            <div class="card-border-glow"></div>
+            <div class="project-grid">
+              <div class="project-media">
+                <div class="media-wrapper">
+                  <img src="assets/images/teashop.jpg" alt="WebTra E-Commerce & AI Chatbot Demo" class="project-img">
+                  <div class="media-overlay">
+                    <a href="https://github.com/Dex-NCuong/TeaShop" target="_blank" rel="noopener noreferrer" class="preview-btn" aria-label="Xem kho lưu trữ TeaShop trên GitHub">
+                      <i data-lucide="github"></i>
+                      <span data-i18n="btn_github_teashop">Xem GitHub TeaShop</span>
+                    </a>
+                  </div>
+                  <div class="project-status-tag">
+                    <span class="tag-dot emerald"></span>
+                    <span>NODE.JS • MERN // OPEN SOURCE</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-details">
+                <div class="project-header-row">
+                  <div>
+                    <span class="proj-category">NODE.JS • MERN STACK • AI NLP CHATBOT • VNPAY</span>
+                    <h3 class="project-name">WebTra - Tea E-Commerce & AI Chatbot</h3>
+                  </div>
+                  <a href="https://github.com/Dex-NCuong/TeaShop" target="_blank" rel="noopener noreferrer" class="proj-link-btn" title="View GitHub Repository" aria-label="Xem mã nguồn trên GitHub">
+                    <i data-lucide="github"></i>
+                  </a>
+                </div>
+
+                <p class="project-summary" data-i18n="p4_summary">
+                  Nền tảng thương mại điện tử chuyên biệt về trà được phát triển fullstack theo kiến trúc MERN (MongoDB, Express, React, Node.js), tích hợp trợ lý ảo AI Chatbot tư vấn bán hàng thông minh (xử lý ngôn ngữ tự nhiên NLP) và cổng thanh toán trực tuyến bảo mật VNPAY Sandbox.
+                </p>
+
+                <!-- Tech Breakdown -->
+                <div class="tech-breakdown-list">
+                  <div class="tech-feature-card">
+                    <div class="feature-icon green"><i data-lucide="server"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p4_feat1_title">Backend Node.js & RESTful API Architecture</strong>
+                      <p data-i18n="p4_feat1_desc">Xây dựng backend mạnh mẽ với Node.js và Express, quản lý dữ liệu trên MongoDB Atlas & Mongoose, xác thực phân quyền qua JWT và tích hợp CORS / biến môi trường chuẩn sản phẩm thương mại.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon cyan"><i data-lucide="bot"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p4_feat2_title">Trợ Lý Ảo Bán Hàng AI Chatbot (NLP Thông Minh)</strong>
+                      <p data-i18n="p4_feat2_desc">Phát triển Chatbot tương tác tự nhiên: tự động tìm trà theo đặc tính/vùng miền, lọc theo ngân sách ("dưới 500k"), cho phép khách hàng chọn trọng lượng gói và thêm giỏ hàng/thanh toán ngay trong khung chat.</p>
+                    </div>
+                  </div>
+
+                  <div class="tech-feature-card">
+                    <div class="feature-icon amber"><i data-lucide="credit-card"></i></div>
+                    <div class="feature-body">
+                      <strong data-i18n="p4_feat3_title">Cổng Thanh Toán VNPAY & Giao Diện React Hiện Đại</strong>
+                      <p data-i18n="p4_feat3_desc">Tích hợp cổng thanh toán VNPAY Sandbox bảo mật cao. Giao diện frontend xây dựng bằng React (Vite) kết hợp Tailwind CSS, Framer Motion tạo hiệu ứng mượt mà và tối ưu trải nghiệm khách hàng.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-tags">
+                  <span class="tag">Node.js</span>
+                  <span class="tag">Express.js</span>
+                  <span class="tag">MongoDB Atlas</span>
+                  <span class="tag">React (Vite)</span>
+                  <span class="tag">AI Chatbot (NLP)</span>
+                  <span class="tag">VNPAY Sandbox</span>
+                  <span class="tag">Tailwind CSS</span>
+                  <span class="tag">RESTful API</span>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://github.com/Dex-NCuong/TeaShop" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <i data-lucide="github"></i>
+                    <span data-i18n="btn_github_teashop">Xem GitHub TeaShop</span>
+                  </a>
+                  <a href="https://github.com/Dex-NCuong/TeaShop#readme" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i data-lucide="external-link"></i>
+                    <span data-i18n="btn_docs">Khám Phá Chi Tiết</span>
                   </a>
                 </div>
               </div>
@@ -868,17 +1137,31 @@ float3 Normal = BlendAngleCorrectedNormals(BaseNormal, SnowNormal);</code></pre>
               </div>
               <div class="skill-item">
                 <div class="skill-info">
+                  <span>Node.js & Express (RESTful API)</span>
+                  <span class="skill-pct">88%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 88%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>MongoDB Atlas & Database Design</span>
+                  <span class="skill-pct">85%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 85%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span>React.js, WebGL & Modern JavaScript</span>
+                  <span class="skill-pct">86%</span>
+                </div>
+                <div class="skill-track"><div class="skill-bar" style="--skill-val: 86%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info">
                   <span>C# / Java / Python</span>
                   <span class="skill-pct">82%</span>
                 </div>
                 <div class="skill-track"><div class="skill-bar" style="--skill-val: 82%"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span>JavaScript & WebGL</span>
-                  <span class="skill-pct">80%</span>
-                </div>
-                <div class="skill-track"><div class="skill-bar" style="--skill-val: 80%"></div></div>
               </div>
             </div>
           </div>
@@ -1059,6 +1342,62 @@ float3 Normal = BlendAngleCorrectedNormals(BaseNormal, SnowNormal);</code></pre>
                 <a href="https://github.com/Dex-NCuong/TA_Test" target="_blank" rel="noopener noreferrer" class="link-styled">
                   <i data-lucide="github"></i>
                   <span>github.com/Dex-NCuong/TA_Test</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Node: EUW_Tool Project -->
+          <div class="timeline-item reveal-up">
+            <div class="timeline-marker cyan">
+              <i data-lucide="sliders"></i>
+            </div>
+            <div class="timeline-content glass-panel" data-tilt>
+              <div class="time-header">
+                <div>
+                  <span class="time-period">2026 // OPEN SOURCE</span>
+                  <h3 class="time-role">Level Utility Tool: EUW_Tool</h3>
+                  <span class="time-company">Unreal Engine 5 Pipeline & Level Design</span>
+                </div>
+                <span class="tag-status live">Active Tool</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp_euw1">Phát triển Editor Utility Widget (EUW_LevelTool.uasset) trực quan trên UE5, tăng tốc độ sắp đặt môi trường và quản lý lưới thế giới trong Viewport.</li>
+                <li data-i18n="exp_euw2">Xây dựng thế giới thử nghiệm IslandLevel.umap tích hợp modular level prototyping, ThirdPerson navigation và bộ asset từ Fab marketplace.</li>
+                <li data-i18n="exp_euw3">Đóng gói Niagara VFX và chuẩn hóa cấu trúc dự án game studio chuyên nghiệp.</li>
+              </ul>
+              <div class="timeline-foot">
+                <a href="https://github.com/Dex-NCuong/EUW_Tool" target="_blank" rel="noopener noreferrer" class="link-styled">
+                  <i data-lucide="github"></i>
+                  <span>github.com/Dex-NCuong/EUW_Tool</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Node: WebTra Fullstack Node.js -->
+          <div class="timeline-item reveal-up">
+            <div class="timeline-marker green">
+              <i data-lucide="server"></i>
+            </div>
+            <div class="timeline-content glass-panel" data-tilt>
+              <div class="time-header">
+                <div>
+                  <span class="time-period">2026 // OPEN SOURCE</span>
+                  <h3 class="time-role">Fullstack E-Commerce & AI Assistant: WebTra</h3>
+                  <span class="time-company">MERN Stack • Node.js & Express RESTful API</span>
+                </div>
+                <span class="tag-status live">MERN Stack</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp_tea1">Thiết kế kiến trúc RESTful API hiệu năng cao với Node.js và Express.js, lưu trữ cơ sở dữ liệu trên MongoDB Atlas và xác thực bảo mật JWT.</li>
+                <li data-i18n="exp_tea2">Phát triển AI Sales Chatbot thông minh ứng dụng NLP keyword/rule-based: tìm trà thông minh, gợi ý theo ngân sách và thêm giỏ hàng siêu tốc.</li>
+                <li data-i18n="exp_tea3">Tích hợp cổng thanh toán trực tuyến bảo mật VNPAY Sandbox (HMAC-SHA512) và xây dựng frontend React (Vite) tối ưu hóa giao diện người dùng.</li>
+              </ul>
+              <div class="timeline-foot">
+                <a href="https://github.com/Dex-NCuong/TeaShop" target="_blank" rel="noopener noreferrer" class="link-styled">
+                  <i data-lucide="github"></i>
+                  <span>github.com/Dex-NCuong/TeaShop</span>
                 </a>
               </div>
             </div>
